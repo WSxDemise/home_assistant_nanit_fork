@@ -24,7 +24,7 @@ read -p 'Nanit Email: ' EMAIL
 read -sp 'Nanit Password: ' PASSWORD
 
 # TODO: show json and disable --silent in curl when debug flag is present
-LOGIN=$(jq -n --arg email "$EMAIL" --arg password "$PASSWORD" '{email: $email, password: $password, channel: "email"}' | curl --silent --header 'nanit-api-version: 1' --header 'Content-Type: application/json' -d@- https://api.nanit.com/login)
+LOGIN=$(jq -n --arg email "$EMAIL" --arg password "$PASSWORD" '{email: $email, password: $password, channel: "sms"}' | curl --silent --header 'nanit-api-version: 1' --header 'Content-Type: application/json' -d@- https://api.nanit.com/login)
 
 if [ "$DEBUG" = true ] ; then
     echo "LOGIN Result: $LOGIN"
